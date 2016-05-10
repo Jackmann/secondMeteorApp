@@ -1,0 +1,32 @@
+<head>
+  <title>simple</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+  <p>{{> loginButtons}}</p>
+  <p>{{> info}}</p>
+</body>
+
+<template name="info">
+  {{#if currentUser}}
+    <p>Count of players: {{howmuch}}</p>
+    <ul>
+      {{#each tasks}}
+        <li class="player {{selectedClass}}">{{name}}: {{score}}</li>
+        <input type="text">
+      {{/each}}
+    </ul>
+    {{#if selectedGringo}}
+      <p>Selected player: {{selectedGringo.name}}</p>
+      <button class="increment">Add point</button>
+      <button class="remove">Delete player</button>
+    {{/if}}
+      <form>
+        <p>Add new player:</p>
+        <input type="text" placeholder="Name" name="gringoField">
+        <input type="number" placeholder="Score" name="gringoScore">
+        <input type="submit">
+      </form>
+  {{/if}}
+</template>
